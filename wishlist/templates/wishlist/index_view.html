@@ -1,0 +1,25 @@
+{% extends 'wishlist/base.html' %}
+
+{% block content %}
+    <h2 class="">Вишлист</h2>
+    <ul class="flex flex-col gap-4 p-8">
+        {% for wish in object_list %}
+            <li class="flex flex-col rounded-xl p-8 shadow max-w-md">
+                <figure class="">
+                    <img
+                        class="h-64 rounded mx-auto aspect-auto"
+                        src="{{ wish.image.url }}"
+                        width="{{ wish.image.width_field }}"
+                        height="{{ wish.image.height_field }}"
+                    />
+                </figure>
+                <div class="">
+                    <p class="">{{ wish.name }}</p>
+                    {% if not wish.description == None %}
+                    <p>{{ wish.description }}</p>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
